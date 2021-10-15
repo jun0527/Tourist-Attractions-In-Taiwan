@@ -1,0 +1,7 @@
+.header {
+  a {
+    @include sm {
+      font-size: 40px;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/all.css">
+</head>
+<body>
+  <header class="header bg-dark text-center py-3">
+    <h1><a class="fs-1 text-white opacity-hover" href="index.html">全台旅遊景點搜尋</a></h1>
+  </header>
+  <main class="main" data-page="index">
+    <section class="attractionsSearchArea py-7">
+      <div class="container">
+        <div class="searchArea mb-4">
+          <div class="cityArea d-flex ai-center me-4">
+            <label class="fs-4 fs-5-sm">縣市：</label>
+            <select class="js-citySelect city fs-5 px-3">
+              <option value="" selected disabled>請選擇縣市</option>
+            </select>
+          </div>
+          <div class="d-flex d-block-sm">
+            <div class="keywordArea d-flex ai-center">
+              <label class="fs-4 text-nowrap fs-5-sm" for="keywordSearch">關鍵字搜尋：</label>
+              <input class="js-keywordSearch fs-5 px-3" type="text" id="keywordSearch">
+            </div>
+            <div>
+              <button class="js-searchBtn searchBtn fs-5 bg-primary text-white opacity-hover px-4" type="button">搜尋</button>
+            </div>
+          </div>
+        </div>
+        <div class="searchNumArea d-flex jc-center">
+          <p class="js-searchNum text-center"></p>
+        </div>
+      </div>
+    </section>
+    <section class="attractionsListArea container py-8">
+      <ul class="js-attractionsList attractionsList">
+      </ul>
+      <ul class="js-pagination pagination d-flex jc-center">
+        <!-- <li><a class="disabled d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="pre">
+          <span class="material-icons d-block">
+            chevron_left
+          </span>
+        </a></li>
+        <li><a class="active disabled d-flex jc-center ai-center text-white" href="javascript:;" data-btn="1">1</a></li>
+        <li><a class="d-flex jc-center ai-center text-white" href="javascript:;" data-btn="2">2</a></li>
+        <li><a class="d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="next">
+          <span class="material-icons d-block">
+            chevron_right
+          </span>
+        </a></li> -->
+      </ul>
+    </section>
+  </main>
+  <footer class="bg-dark py-4">
+    <div class="footer container">
+      <p class="statement fs-5 text-white">僅個人作品，無商業用途</p>
+      <div class="sourceArea d-flex ai-center">
+        <p class="fs-5 text-white">資料來源：</p>
+        <img class="apiLogo" src="img/PTX_logo深背景使用.png" alt="交通部PTX服務平臺&平臺標章">
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.min.js" integrity="sha512-/yIGjYJZIXZx10ig0yhbK41OiwcqBUxIj0xQJe+NwkMIdS/u07b6Mwo0nvXB4o7A6WiKnKOf92JwE5Ezo27u9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/all.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+  line-height: 1.5;
+}
+a {
+  color: $dark;
+  text-decoration: none;
+}
+select, input {
+  height: 38px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 16px;
+  border: 1px solid $dark;
+  border-radius: 8px;
+}
+button {
+  font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+  height: 38px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

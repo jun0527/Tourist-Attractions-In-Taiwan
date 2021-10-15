@@ -1,0 +1,150 @@
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background: $color;
+  }
+  .text-#{$name} {
+    color: $color;
+  }
+}
+@each $name, $key in $space {
+  .m {
+    &-#{$name} {
+      margin: $key;
+    }
+    &t-#{$name} {
+      margin-top: $key;
+    }
+    &b-#{$name} {
+      margin-bottom: $key;
+    }
+    &s-#{$name} {
+      margin-left: $key;
+    }
+    &e-#{$name} {
+      margin-right: $key;
+    }
+  }
+  .p {
+    &-#{$name} {
+      padding: $key;
+    }
+    &t-#{$name} {
+      padding-top: $key;
+    }
+    &b-#{$name} {
+      padding-bottom: $key;
+    }
+    &s-#{$name} {
+      padding-left: $key;
+    }
+    &e-#{$name} {
+      padding-right: $key;
+    }
+    &y-#{$name} {
+      padding-top: $key;
+      padding-bottom: $key;
+    }
+    &x-#{$name} {
+      padding-right: $key;
+      padding-left: $key;
+    }
+  }
+}
+@each $name, $key in $fonts {
+  .fs-#{$name} {
+    font-size: $key;
+  }
+  .fs-#{$name}-md {
+    @include md {
+      font-size: $key;
+    }
+  }
+  .fs-#{$name}-sm {
+    @include sm {
+      font-size: $key;
+    }
+  }
+}
+
+.d {
+  &-flex {
+    display: flex;
+  }
+  &-flex-md {
+    @include md {
+      display: flex;
+    }
+  }
+  &-flex-sm {
+    @include sm {
+      display: flex;
+    }
+  }
+  &-none {
+    display: none;
+  }
+  &-block {
+    display: block;
+  }
+  &-block-lg {
+    @include lg {
+      display: block;
+    }
+  }
+  &-block-md {
+    @include md {
+      display: block;
+    }
+  }
+  &-block-sm {
+    @include sm {
+      display: block;
+    }
+  }
+}
+.flex {
+  &-grow {
+    &-1 {
+      flex-grow: 1;
+    }
+  }
+  &-column {
+    flex-direction: column;
+  }
+}
+.jc {
+  &-between {
+    justify-content: space-between;
+  }
+  &-center {
+    justify-content: center;
+  }
+}
+.ai {
+  &-center {
+    align-items: center;
+  }
+}
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-nowrap {
+    white-space: nowrap;
+  }
+}
+.fw {
+  &-bold {
+    font-weight: bold;
+  }
+}
+.opacity {
+  &-hover {
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+.h-100 {
+  height: 100%;
+}

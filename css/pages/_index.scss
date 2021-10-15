@@ -1,0 +1,125 @@
+.attractionsSearchArea {
+  border-bottom: 2px solid #D9D9D9;
+  .searchArea {
+    display: flex;
+    justify-content: center;
+    @include md {
+      max-width: 500px;
+      margin: 0 auto 16px auto;
+      flex-direction: column;
+    }
+    @include sm {
+      max-width: 372px;
+    }
+  }
+  .keywordArea {
+    margin-right: 16px;
+    @include sm {
+      margin-right: 0;
+      margin-bottom: 16px;
+    }
+  }
+  input {
+    max-width: 250px;
+    flex-grow: 1;
+    @include sm {
+      min-width: 150px;
+    }
+  }
+  .cityArea {
+    @include md {
+      margin-bottom: 16px;
+    }
+  }
+  .searchBtn {
+    @include sm {
+      width: 100%;
+    }
+  }
+  .searchNumArea {
+    height: 24px;
+  }
+}
+.attractionsListArea {
+  min-height: calc(100vh - 96px - 136px - 97.64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include md {
+    min-height: calc(100vh - 96px - 190px - 143.64px);
+  }
+  @include sm {
+    min-height: calc(100vh - 84px - 244px - 181.64px);
+  }
+}
+.attractionsList {
+  display: flex;
+  flex-wrap: wrap;
+  li {
+    width: 33.3333%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 16px;
+    @include lg {
+      width: 50%;
+    }
+    @include sm {
+      width: 100%;
+    }
+  }
+  .card {
+    position: relative;
+    display: block;
+    border: 1px solid #cacaca;
+    border-radius: 10px;
+    overflow: hidden;
+    &:hover {
+      box-shadow: 0 2px 6px 0 rgba($color: #000000, $alpha: 0.3);
+    }
+    &:hover .picture {
+      width: 120%;
+      margin-left: -10%;
+    }
+  }
+  .tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: $primary;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  .picture {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+  }
+  .noPicture {
+    width: 100%;
+    height: 200px;
+    background: rgb(117, 117, 117);
+  }
+}
+.pagination {
+  li {
+    padding: 5px;
+  }
+  a {
+    width: 24px;
+    height: 30px;
+    border-radius: 4px;
+    background: $dark;
+    &:hover:not(.active) {
+      opacity: 0.7;
+    }
+    &.active {
+      background: $primary;
+      cursor: context-menu;
+    }
+    &.disabled:not(.active) {
+      opacity: 0.4;
+      cursor: no-drop;
+    }
+  }
+}

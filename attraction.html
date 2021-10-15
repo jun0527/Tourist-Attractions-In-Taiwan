@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/all.css">
+</head>
+<body>
+  <header class="header bg-dark text-center py-3">
+    <h1><a class="fs-1 text-white opacity-hover" href="index.html">全台旅遊景點搜尋</a></h1>
+  </header>
+  <main  data-page="attraction">
+    <section class="js-attractionInfo attractionInfo container mb-6">
+    </section>
+    <section class="searchArea container">
+      <h3 class="fs-3 fw-bold text-center mb-4">周邊地標搜尋</h3>
+      <div class="js-typeBtnArea typeBtnArea">
+        <button class="active" type="button" data-type="Hotel">飯店</button>
+        <button type="button" data-type="Restaurant">餐飲</button>
+        <button type="button" data-type="Activity">活動</button>
+      </div>
+      <div class="searchScopeArea d-flex jc-center mb-4">
+        <select class="js-searchScope fs-5 me-4">
+          <option value="">請選擇搜尋範圍</option>
+          <option value="300">300公尺內</option>
+          <option value="500">500公尺內</option>
+          <option value="1000">1000公尺內</option>
+          <option value="2000">2000公尺內</option>
+        </select>
+        <button class="js-searchNearbyBtn fs-5 bg-primary text-white opacity-hover px-4" type="button">搜尋</button>
+      </div>
+      <table class="resultArea">
+        <thead>
+          <tr>
+            <th width="20%">名稱</th>
+            <th width="15%">電話</th>
+            <th width="35%">地址</th>
+            <th width="30%">網址</th>
+          </tr>
+        </thead>
+        <tbody class="js-nearbyResultArea">
+          <tr>
+            <td class="noResult" colspan="4">
+              請選擇搜尋目標及範圍。
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="bg-dark py-4">
+    <div class="footer container">
+      <p class="statement fs-5 text-white">僅個人作品，無商業用途</p>
+      <div class="sourceArea d-flex ai-center">
+        <p class="fs-5 text-white">資料來源：</p>
+        <img class="apiLogo" src="img/PTX_logo深背景使用.png" alt="交通部PTX服務平臺&平臺標章">
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.min.js" integrity="sha512-/yIGjYJZIXZx10ig0yhbK41OiwcqBUxIj0xQJe+NwkMIdS/u07b6Mwo0nvXB4o7A6WiKnKOf92JwE5Ezo27u9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/all.js"></script>
+</body>
+</html>

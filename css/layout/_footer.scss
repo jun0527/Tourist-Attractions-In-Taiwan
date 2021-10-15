@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include md {
+    display: block;
+  }
+  .statement {
+    @include md {
+      margin-bottom: 16px;
+    }
+  }
+  .sourceArea {
+    @include sm {
+      flex-direction: column;
+      align-items: start;
+    }
+    p {
+      @include sm {
+        margin-bottom: 8px;
+      }
+    }
+    .apiLogo {
+      width: 300px;
+    }
+  }
+}
