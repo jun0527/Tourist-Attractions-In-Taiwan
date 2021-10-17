@@ -155,29 +155,37 @@ switch (main.dataset.page) {
         }
         pageArr.reverse();
       }
-      let str = `<li><a class="${paginationData.current === 1 ? 'disabled' : ''} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="first">
-            <span class="material-icons d-block">
-              first_page
-            </span>
-          </a></li>
-          <li><a class="${paginationData.pre ? '' : 'disabled'} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="pre">
-            <span class="material-icons">
-              chevron_left
-            </span>
-          </a></li>`;
-      pageArr.forEach((item) => {
-        str += `<li><a class="${paginationData.current === item ? 'active disabled' : ''} d-flex jc-center ai-center text-white" href="javascript:;" data-btn="${item}">${item}</a></li>`;
-      })
-      str += `<li><a class="${paginationData.next ? '' : 'disabled'} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="next">
-              <span class="material-icons d-block">
-                chevron_right
-              </span>
-            </a></li>
-            <li><a class="${pagesNum === current ? 'disabled' : ''} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="finally">
-              <span class="material-icons d-block">
-                last_page
-              </span>
-            </a></li>`;
+      let str = '';
+      switch (pagesNum) {
+        case 0:
+          console.log(pagesNum);
+          break;
+        default:
+          str += `<li><a class="${paginationData.current === 1 ? 'disabled' : ''} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="first">
+                <span class="material-icons d-block">
+                  first_page
+                </span>
+              </a></li>
+              <li><a class="${paginationData.pre ? '' : 'disabled'} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="pre">
+                <span class="material-icons">
+                  chevron_left
+                </span>
+              </a></li>`;
+          pageArr.forEach((item) => {
+            str += `<li><a class="${paginationData.current === item ? 'active disabled' : ''} d-flex jc-center ai-center text-white" href="javascript:;" data-btn="${item}">${item}</a></li>`;
+          })
+          str += `<li><a class="${paginationData.next ? '' : 'disabled'} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="next">
+                  <span class="material-icons d-block">
+                    chevron_right
+                  </span>
+                </a></li>
+                <li><a class="${pagesNum === current ? 'disabled' : ''} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="finally">
+                  <span class="material-icons d-block">
+                    last_page
+                  </span>
+                </a></li>`;
+          break;
+      }
       pagination.innerHTML = str;
     }
     //切換頁分頁
