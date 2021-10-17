@@ -27,7 +27,7 @@ function getAuthorizationHeader() {
   let Authorization = `hmac username="${AppID}", algorithm="hmac-sha1", headers="x-date", signature="${HMAC}"`;
   return { 'Authorization': Authorization, 'X-Date': UTCString };
 }
-let cityName = '';
+let cityName = 'Taipei';
 switch (main.dataset.page) {
   case 'index':
     let cityData = [];
@@ -47,12 +47,20 @@ switch (main.dataset.page) {
         .then((res) => {
           cityData = res.data;
           renderCitySelect();
+          getAllSearchData();
         })
     }
     function renderCitySelect() {
-      let str = `<option value="" selected disabled>請選擇縣市</option>`;
+      let str = '`<option value="" disabled>請選擇縣市</option>`';
       cityData.forEach((item) => {
-        str += `<option value="${item.City}">${item.CityName}</option>`
+        switch (item.City) {
+          case 'Taipei':
+            str += `<option value="${item.City}" selected>${item.CityName}</option>`
+            break;
+          default:
+            str += `<option value="${item.City}">${item.CityName}</option>`
+            break;
+        }
       })
       citySelect.innerHTML = str;
     }
@@ -60,15 +68,12 @@ switch (main.dataset.page) {
     citySelect.addEventListener('change', changeCityName);
     function changeCityName(e) {
       cityName = e.target.value;
+      getAllSearchData();
     }
     searchBtn.addEventListener('click', searchAttractions);
     function searchAttractions() {
       keyword = keywordSearch.value.trim();
-      switch (cityName !== '' && keyword !== '') {
-        case true:
-          getAllSearchData();
-          break;
-      }
+      getAllSearchData();
     }
     //取得所有搜尋資料
     function getAllSearchData() {
@@ -126,11 +131,37 @@ switch (main.dataset.page) {
     function renderPagination() {
       let pagesNum = paginationData.pagesNum;
       let pageArr = [];
-      for (let i = 1; i <= pagesNum; i++) {
-        pageArr.push(i);
+      let current = paginationData.current;
+      if (pagesNum <= 5) {
+        //當頁數不到 5 頁
+        for (let i = 1; i <= pagesNum; i++) {
+          pageArr.push(i);
+        }
+      } else if (current <= 5) {
+        //當頁數超過 5 頁，且當前頁小於等於 5
+        for (let i = 1; i <= 5; i++) {
+          pageArr.push(i)
+        }
+      } else if (current === pagesNum) {
+        //當頁數超過 5 頁，且當前頁為最後一頁
+        for (let i = pagesNum; i >= pagesNum - 4; i--) {
+          pageArr.push(i)
+        }
+        pageArr.reverse();
+      } else {
+        //當頁數超過 5 頁，且當前頁不為前 5 頁或最後一頁
+        for (let i = current; i >= current - 4; i--) {
+          pageArr.push(i);
+        }
+        pageArr.reverse();
       }
-      let str = `<li><a class="${paginationData.pre ? '' : 'disabled'} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="pre">
+      let str = `<li><a class="${paginationData.current === 1 ? 'disabled' : ''} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="first">
             <span class="material-icons d-block">
+              first_page
+            </span>
+          </a></li>
+          <li><a class="${paginationData.pre ? '' : 'disabled'} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="pre">
+            <span class="material-icons">
               chevron_left
             </span>
           </a></li>`;
@@ -140,6 +171,11 @@ switch (main.dataset.page) {
       str += `<li><a class="${paginationData.next ? '' : 'disabled'} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="next">
               <span class="material-icons d-block">
                 chevron_right
+              </span>
+            </a></li>
+            <li><a class="${pagesNum === current ? 'disabled' : ''} d-flex jc-center ai-center bg-dark text-white" href="javascript:;" data-btn="finally">
+              <span class="material-icons d-block">
+                last_page
               </span>
             </a></li>`;
       pagination.innerHTML = str;
@@ -163,6 +199,12 @@ switch (main.dataset.page) {
                   break;
                 case 'next':
                   page = paginationData.current + 1;
+                  break;
+                case 'first':
+                  page = 1;
+                  break;
+                case 'finally':
+                  page = paginationData.pagesNum;
                   break;
                 default:
                   page = parseInt(paginationLink.dataset.btn);
