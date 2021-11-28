@@ -38,32 +38,10 @@ switch (main.dataset.page) {
     let pagesNum = 0;
     //index載入渲染
     function indexInit() {
-      citySelectInit();
+      // citySelectInit();
+      getAllSearchData();
     }
     indexInit();
-    //縣市選單渲染
-    function citySelectInit() {
-      axios.get('https://gist.motc.gov.tw/gist_api/V3/Map/Basic/City?$format=JSON', headersObj)
-        .then((res) => {
-          cityData = res.data;
-          renderCitySelect();
-          getAllSearchData();
-        })
-    }
-    function renderCitySelect() {
-      let str = '`<option value="" disabled>請選擇縣市</option>`';
-      cityData.forEach((item) => {
-        switch (item.City) {
-          case 'Taipei':
-            str += `<option value="${item.City}" selected>${item.CityName}</option>`
-            break;
-          default:
-            str += `<option value="${item.City}">${item.CityName}</option>`
-            break;
-        }
-      })
-      citySelect.innerHTML = str;
-    }
     //搜尋功能
     citySelect.addEventListener('change', changeCityName);
     function changeCityName(e) {
